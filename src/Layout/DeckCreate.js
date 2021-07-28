@@ -21,7 +21,6 @@ function DeckCreate(){
     };
     const history = useHistory();
     const handleSubmit = (event) => {
-        let output = [];
         event.preventDefault();
         
         async function updateData() {

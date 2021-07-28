@@ -5,7 +5,7 @@ on an existing card.
 import React, {useState, useEffect} from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import CardForm from "./CardForm"
-import {readDeck, readCard, updateCard} from "../utils/api/index"
+import {readDeck, readCard} from "../utils/api/index"
 
 function CardEdit(){
     const params = useParams();
@@ -42,13 +42,10 @@ function CardEdit(){
     };
     const history = useHistory();
     const handleSubmit = (event) => {
-        let output = [];
         event.preventDefault();
         console.log("Submitted:", card);
         async function updateData() {
            try {
-           const dataFromAPI = await updateCard(card);
-
            history.push(`/decks/${deckId}`);
           } catch (error) {
             if (error.name === "AbortError") {
